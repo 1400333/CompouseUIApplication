@@ -25,7 +25,7 @@ class Lesson3Activity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),  //全螢幕填滿
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MessageCard3(Message("停機原因","為了提供更優質的服務，TIPTOP相關系統將進行系統維護更新。維護期間，為確保資料一致性，將全面停止 EIP & TIPTOP相關系統的系統服務。"))
+                    MessageCard3(Message("停機原因","對於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
                 }
             }
         }
@@ -45,7 +45,7 @@ fun PreviewLesson3() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            MessageCard3(Message("停機原因","為了提供更優質的服務，TIPTOP相關系統將進行系統維護更新。維護期間，為確保資料一致性，將全面停止 EIP & TIPTOP相關系統的系統服務。"))
+            MessageCard3(Message("新聞快報","有關於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
         }
     }
 }

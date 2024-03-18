@@ -17,7 +17,7 @@ class Lesson1Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard.MessageCard1("精誠隨想")
+            MessageCard.MessageCard1("google pixel")
         }
     }
 }

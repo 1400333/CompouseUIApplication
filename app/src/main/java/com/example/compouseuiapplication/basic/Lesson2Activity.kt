@@ -19,7 +19,7 @@ class Lesson2Activity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard.MessageCard2(Message("Systex","This message contains confidential information and is intended only for you."))
+            MessageCard.MessageCard2(Message("Hello Android","Connected to process 28934 on device 'google-pixel_5 for you."))
         }
     }
 }
