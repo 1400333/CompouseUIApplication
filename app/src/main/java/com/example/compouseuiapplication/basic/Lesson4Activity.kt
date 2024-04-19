@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.compouseuiapplication.data.Message
 import com.example.compouseuiapplication.data.SampleData
-import com.example.compouseuiapplication.ui.common.MessageCard.MessageCard3
+import com.example.compouseuiapplication.ui.common.MessageCard.MessageCard4
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 import com.example.compouseuiapplication.ui.theme.AppBackgroundColor
 
@@ -42,7 +42,7 @@ class Lesson4Activity : ComponentActivity() {
 fun Conversation(messages: List<Message>) {
     LazyColumn {
         items(messages) { message ->
-            MessageCard3(message)
+            MessageCard4(message)
         }
     }
 }
