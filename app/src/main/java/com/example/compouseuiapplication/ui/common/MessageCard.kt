@@ -82,3 +82,4 @@ object MessageCard {
         }
     }
 }
+

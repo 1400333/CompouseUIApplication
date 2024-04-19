@@ -1,6 +1,8 @@
 package com.example.compouseuiapplication.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
 
 import androidx.compose.ui.graphics.Color
 
@@ -14,5 +16,13 @@ val plight = Color(0xFFc7e1ff)
 val plight40 = Color(0xFFe9f3ff)
 val white = Color(0xFFFFFFFF)
 
+//自定義顏色
+@Composable
+fun AppBackgroundColor(darkTheme: Boolean = isSystemInDarkTheme()): Color {
+    val colorRet: Color = when {
+        darkTheme -> nice_blue
+        else -> white
+    }
 
-
+    return colorRet
+}
