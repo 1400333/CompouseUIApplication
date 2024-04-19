@@ -1,5 +1,7 @@
 package com.example.compouseuiapplication.ui.theme
 
+import androidx.compose.material3.ColorScheme
+
 import androidx.compose.ui.graphics.Color
 
 //色票
@@ -11,4 +13,6 @@ val nice_blue = Color(0xFF0b57a6)
 val plight = Color(0xFFc7e1ff)
 val plight40 = Color(0xFFe9f3ff)
 val white = Color(0xFFFFFFFF)
+
+
 
