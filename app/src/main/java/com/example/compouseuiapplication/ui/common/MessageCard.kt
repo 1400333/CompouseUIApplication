@@ -38,15 +38,13 @@ object MessageCard {
     @Composable
     fun MessageCard2(msg: Message) {
         Row(modifier = Modifier.padding(all = 8.dp)) {
-            Image(
-                painter = painterResource(R.drawable.profile_picture),
-                contentDescription = "Contact profile picture",
-                modifier = Modifier
-                    // Set image size to 40 dp
-                    .size(40.dp)
-                    // Clip image to be shaped as a circle
-                    .clip(CircleShape)
-            )
+            Image(painter = painterResource(R.drawable.profile_picture),
+                  contentDescription = "Contact profile picture",
+                  modifier = Modifier
+                      // Set image size to 40 dp
+                      .size(40.dp)
+                      // Clip image to be shaped as a circle
+                      .clip(CircleShape))
 
             //Modifier 只有 padding 沒有 margin，如開發中要使用margin時，改使用Spacer
             Spacer(modifier = Modifier.width(8.dp))
@@ -62,30 +60,22 @@ object MessageCard {
     @Composable
     fun MessageCard3(msg: Message) {
         Row(modifier = Modifier.padding(all = 8.dp)) {
-            Image(
-                painter = painterResource(R.drawable.profile_picture),
-                contentDescription = "Contact profile picture",
-                modifier = Modifier
-                    // Set image size to 40 dp
-                    .size(40.dp)
-                    // Clip image to be shaped as a circle
-                    .clip(CircleShape)
-                    .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape)
-            )
+            Image(painter = painterResource(R.drawable.profile_picture),
+                  contentDescription = "Contact profile picture",
+                  modifier = Modifier
+                      // Set image size to 40 dp
+                      .size(40.dp)
+                      // Clip image to be shaped as a circle
+                      .clip(CircleShape)
+                      .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
 
             //Modifier 只有 padding 沒有 margin，如開發中要使用margin時，改使用Spacer
             Spacer(modifier = Modifier.width(8.dp))
 
             Column {
-                Text(
-                    text = msg.author,
-                    color = MaterialTheme.colorScheme.secondary
-                )
+                Text(text = msg.author, color = MaterialTheme.colorScheme.secondary)
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = msg.body,
-                    color = MaterialTheme.colorScheme.secondary
-                )
+                Text(text = msg.body, color = MaterialTheme.colorScheme.secondary)
             }
         }
     }
@@ -93,50 +83,42 @@ object MessageCard {
     @Composable
     fun MessageCard4(msg: Message) {
         Row(modifier = Modifier.padding(all = 8.dp)) {
-            Image(
-                painter = painterResource(R.drawable.profile_picture),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape)
-            )
+            Image(painter = painterResource(R.drawable.profile_picture),
+                  contentDescription = null,
+                  modifier = Modifier
+                      .size(40.dp)
+                      .clip(CircleShape)
+                      .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
             Spacer(modifier = Modifier.width(8.dp))
 
             // We keep track if the message is expanded or not in this
             // variable
-            var isExpanded by remember { mutableStateOf(false) }
+            var isExpanded by remember { mutableStateOf(msg.bExpanded) }
             // surfaceColor will be updated gradually from one color to the other
             val surfaceColor by animateColorAsState(
                 if (isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
             )
 
             // We toggle the isExpanded variable when we click on this Column
-            Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
-                Text(
-                    text = msg.author,
-                    color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleSmall
-                )
+            Column(modifier = Modifier.clickable {
+                isExpanded = !isExpanded
+                msg.bExpanded = isExpanded
+            }) {
+                Text(text = msg.author, color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.titleSmall)
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Surface(
-                    shape = MaterialTheme.shapes.medium,
-                    shadowElevation = 1.dp,
+                Surface(shape = MaterialTheme.shapes.medium, shadowElevation = 1.dp,
                     // surfaceColor color will be changing gradually from primary to surface
-                    color = surfaceColor,
+                        color = surfaceColor,
                     // animateContentSize will change the Surface size gradually
-                    modifier = Modifier.animateContentSize().padding(1.dp)
-                ) {
-                    Text(
-                        text = msg.body,
-                        modifier = Modifier.padding(all = 4.dp),
+                        modifier = Modifier
+                            .animateContentSize()
+                            .padding(1.dp)) {
+                    Text(text = msg.body, modifier = Modifier.padding(all = 4.dp),
                         // If the message is expanded, we display all its content
                         // otherwise we only display the first line
-                        maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                        style = MaterialTheme.typography.bodyMedium
-                    )
+                         maxLines = if (isExpanded) Int.MAX_VALUE else 1, style = MaterialTheme.typography.bodyMedium)
                 }
             }
         }
