@@ -15,6 +15,13 @@ import com.example.compouseuiapplication.data.Message
 import com.example.compouseuiapplication.ui.common.MessageCard.MessageCard3
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 
+/**
+ * 第 3 課：深色主題
+ * Surface 也是 @Composable
+ * Modifier 更改元件的外觀，例：間距、高度、全螢幕填滿
+ * CompouseUIApplicationTheme 設定深淺主題
+ * @Preview 可同時預覽深淺主題
+ */
 class Lesson3Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
