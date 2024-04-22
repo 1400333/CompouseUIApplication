@@ -1,6 +1,5 @@
 package com.example.compouseuiapplication.basic
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -20,7 +19,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
@@ -33,7 +31,7 @@ class Lesson5Activity : ComponentActivity() {
         setContent {
             Log.d("RDLog", "---- clicked onCreated setContent ")
 
-            PreviewLesson5_6();
+            PreviewLesson5_4_remember();
         }
     }
 }
@@ -81,7 +79,7 @@ fun PreviewLesson5_2() {
                    .padding(16.dp)
                    .fillMaxWidth()
                    .height(50.dp)) {
-       
+
             Text(text = "I have been clicked ${iCount} times",
                  modifier = Modifier.align(Alignment.CenterVertically))
 

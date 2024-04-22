@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CompouseUIApplication"
         tools:targetApi="31">
         <activity
-            android:name=".basic.Lesson5Activity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CompouseUIApplication">
@@ -23,6 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".basic.Lesson1Activity"/>
+        <activity android:name=".basic.Lesson2Activity"/>
+        <activity android:name=".basic.Lesson3Activity"/>
+        <activity android:name=".basic.Lesson4Activity"/>
+        <activity android:name=".basic.Lesson5Activity"/>
     </application>
 
 </manifest>
