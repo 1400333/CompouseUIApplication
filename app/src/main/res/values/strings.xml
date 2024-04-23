@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CompouseUIApplication</string>
+
+    <string name="lesson1_sample_text">google pixel</string>
+
+    <string name="lesson2_sample_author">Hello Android</string>
+    <string name="lesson2_sample_body">Connected to process 28934 on device google-pixel_5 for you.</string>
+
+    <string name="lesson3_sample_author">停機原因</string>
+    <string name="lesson3_sample_body">對於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。</string>
+    <string name="lesson3_btn_text1">示範按鈕1</string>
+    <string name="lesson3_btn_text2">示範按鈕1</string>
 </resources>

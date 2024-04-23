@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.compouseuiapplication.R
 import com.example.compouseuiapplication.ui.common.MessageCard
 import com.example.compouseuiapplication.ui.theme.CustomMessageCard1Theme
 
@@ -19,8 +20,8 @@ class Lesson1Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CustomMessageCard1Theme{
-                MessageCard.MessageCard1("google pixel")
+            CustomMessageCard1Theme {
+                MessageCard.MessageCard1(getString(R.string.lesson1_sample_text))
             }
 
         }
@@ -30,7 +31,7 @@ class Lesson1Activity : ComponentActivity() {
 @Preview
 @Composable
 fun PreviewLesson1() {
-    CustomMessageCard1Theme{
+    CustomMessageCard1Theme {
         MessageCard.MessageCard1("預覽文字")
     }
 }

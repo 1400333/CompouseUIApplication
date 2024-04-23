@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.compouseuiapplication.R
 import com.example.compouseuiapplication.data.Message
 import com.example.compouseuiapplication.ui.common.MessageCard.MessageCard3
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
@@ -54,33 +55,15 @@ class Lesson3Activity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),  //全螢幕填滿
                         color = MaterialTheme.colorScheme.background) {
                     Column {
-                        MessageCard3(Message("停機原因",
-                                             "對於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
-                        CustomButton(onButtonClick = {}, "測試標題")
-                        CustomButton(onButtonClick = {}, "測試標題", false)
+                        MessageCard3(Message(author = getString(R.string.lesson3_sample_author),
+                                             body = getString(R.string.lesson3_sample_body)))
+                        CustomButton(onButtonClick = {},
+                                     text = getString(R.string.lesson3_btn_text1))
+                        CustomButton(onButtonClick = {},
+                                     text = getString(R.string.lesson3_btn_text2),
+                                     isEnabled = false)
                     }
-
                 }
-            }
-        }
-    }
-}
-
-@Preview(name = "Light Mode")
-@Preview(
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true,
-    name = "Dark Mode",
-)
-@Composable
-fun PreviewLesson3() {
-    CompouseUIApplicationTheme {
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            Column {
-                MessageCard3(Message("新聞快報",
-                                     "有關於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
-                CustomButton(onButtonClick = {}, "測試標題")
-                CustomButton(onButtonClick = {}, "測試標題", false)
             }
         }
     }
@@ -109,9 +92,9 @@ fun CustomButton(
 
     val containerColor: Color
 
-    if (isPressed){
+    if (isPressed) {
         containerColor = CustomBtnPressed();
-    }else{
+    } else {
         containerColor = CustomBtnEnabled()
     }
 
@@ -132,5 +115,25 @@ fun CustomButton(
              fontSize = 16.sp)
 
     }
-
 }
+
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode",
+)
+@Composable
+fun PreviewLesson3() {
+    CompouseUIApplicationTheme {
+        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+            Column {
+                MessageCard3(Message("新聞快報",
+                                     "有關於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
+                CustomButton(onButtonClick = {}, "測試標題")
+                CustomButton(onButtonClick = {}, "測試標題", false)
+            }
+        }
+    }
+}
+

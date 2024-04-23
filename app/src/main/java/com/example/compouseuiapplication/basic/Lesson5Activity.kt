@@ -31,7 +31,7 @@ class Lesson5Activity : ComponentActivity() {
         setContent {
             Log.d("RDLog", "---- clicked onCreated setContent ")
 
-            PreviewLesson5_4_remember();
+            PreviewLesson5_4_remember()
         }
     }
 }
@@ -133,7 +133,7 @@ fun PreviewLesson5_3() {
 @Composable
 fun PreviewLesson5_4_remember() {
     Surface() {
-        var iCount by remember{ mutableStateOf(0)}   //使用remember
+        var iCount by remember { mutableStateOf(0) }   //使用remember
 
         Button(onClick = { iCount++ },
                modifier = Modifier
@@ -151,6 +151,7 @@ fun PreviewLesson5_4_remember() {
 
     }
 }
+
 /**
  * 5_5 outside Surface
  * 講解：
