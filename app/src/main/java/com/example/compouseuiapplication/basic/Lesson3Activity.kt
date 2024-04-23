@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compouseuiapplication.R
 import com.example.compouseuiapplication.data.Message
-import com.example.compouseuiapplication.ui.common.MessageCard.MessageCard3
+import com.example.compouseuiapplication.ui.common.MessageCard3
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 import com.example.compouseuiapplication.ui.theme.CustomBtnBorder
 import com.example.compouseuiapplication.ui.theme.CustomBtnDisabled

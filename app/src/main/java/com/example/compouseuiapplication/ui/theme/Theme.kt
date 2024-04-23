@@ -21,7 +21,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
-import com.example.compouseuiapplication.ui.common.MessageCard
 
 //深色主題
 private val DarkColorScheme = darkColorScheme(primary = plight, secondary = plight40, tertiary = black272727)
