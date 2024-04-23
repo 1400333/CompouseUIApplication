@@ -34,6 +34,7 @@ import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 import com.example.compouseuiapplication.ui.theme.CustomBtnBorder
 import com.example.compouseuiapplication.ui.theme.CustomBtnDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnEnabled
+import com.example.compouseuiapplication.ui.theme.CustomBtnPressed
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
 
@@ -106,14 +107,23 @@ fun CustomButton(
         textColot = CustomBtnTextDisabled()
     }
 
+    val containerColor: Color
+
+    if (isPressed){
+        containerColor = CustomBtnPressed();
+    }else{
+        containerColor = CustomBtnEnabled()
+    }
+
     Button(onClick = onButtonClick,
+           interactionSource = interactionSource,
            enabled = isEnabled,
            modifier = Modifier
                .fillMaxWidth()
                .padding(10.dp)
                .height(44.dp),
            shape = RoundedCornerShape(6.dp),
-           colors = ButtonDefaults.buttonColors(containerColor = CustomBtnEnabled(),
+           colors = ButtonDefaults.buttonColors(containerColor = containerColor,
                                                 disabledContainerColor = CustomBtnDisabled()),
            border = borderStroke) {
         Text(text = text,

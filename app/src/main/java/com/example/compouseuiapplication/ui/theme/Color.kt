@@ -15,8 +15,11 @@ val text_gray = Color(0xFF989898)
 val sky_blue = Color(0xFF66adff)
 val dark_sky_blue = Color(0xFF3a8ce9)
 val nice_blue = Color(0xFF0b57a6)
+val plight_selected = Color(0xFF394552)
 val plight = Color(0xFFc7e1ff)
 val plight40 = Color(0xFFe9f3ff)
+val tertiary = Color(0xFFe7380d)
+val tomato = Color(0xFFe54e29)
 val white = Color(0xFFFFFFFF)
 
 //自定義顏色
@@ -35,6 +38,16 @@ fun CustomBtnEnabled(darkTheme: Boolean = isSystemInDarkTheme()): Color {
     val colorRet: Color = when {
         darkTheme -> greyish_brown
         else -> white
+    }
+
+    return colorRet
+}
+
+@Composable
+fun CustomBtnPressed(darkTheme: Boolean = isSystemInDarkTheme()): Color {
+    val colorRet: Color = when {
+        darkTheme -> plight_selected
+        else -> plight
     }
 
     return colorRet
