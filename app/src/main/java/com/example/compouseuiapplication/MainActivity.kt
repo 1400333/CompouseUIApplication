@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import com.example.compouseuiapplication.advanced.RequestSampleActivity
 import com.example.compouseuiapplication.basic.Lesson1Activity
 import com.example.compouseuiapplication.basic.Lesson2Activity
 import com.example.compouseuiapplication.basic.Lesson3Activity
@@ -91,6 +92,10 @@ fun onClickLesson(context: Context, info: LessonInfo): Intent? {
 
         LessonInfo.LESSON_5_REMEMBER_MUTABLE -> {
             intent = Intent(context, Lesson5Activity::class.java)
+        }
+
+        LessonInfo.LESSON_ADV_REQ_VIEWMODEL -> {
+            intent = Intent(context, RequestSampleActivity::class.java)
         }
 
     }

@@ -7,5 +7,6 @@ data class LessonInfo(val iLessonId: Int, val strLessonTitle: String){
         const val LESSON_3_THEME = 3
         const val LESSON_4_LAZY_COLUMN = 4
         const val LESSON_5_REMEMBER_MUTABLE= 5
+        const val LESSON_ADV_REQ_VIEWMODEL= 6
     }
 }

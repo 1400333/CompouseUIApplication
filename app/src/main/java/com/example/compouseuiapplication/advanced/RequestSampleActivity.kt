@@ -14,7 +14,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.compouseuiapplication.data.CountryData
 
-
+/**
+ * 進階：Compose中的ViewModel
+ * api串接、viewModels collectAsState
+ */
 class RequestSampleActivity : ComponentActivity() {
     private val m_viewModel: RequestSampleViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
