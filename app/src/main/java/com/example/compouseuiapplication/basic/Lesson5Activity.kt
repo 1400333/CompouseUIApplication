@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.compouseuiapplication.util.LogUtil
 
 
 /**
@@ -54,10 +55,10 @@ fun PreviewLesson5_1() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }
@@ -84,10 +85,10 @@ fun PreviewLesson5_2() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }
@@ -114,10 +115,10 @@ fun PreviewLesson5_3() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }
@@ -144,10 +145,10 @@ fun PreviewLesson5_4_remember() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }
@@ -174,10 +175,10 @@ fun PreviewLesson5_5() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }
@@ -202,10 +203,10 @@ fun PreviewLesson5_6() {
                  modifier = Modifier.align(Alignment.CenterVertically))
 
 
-            SideEffect(effect = { Log.d("RDLog", "---- text count = $iCount ") })
+            SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
-        SideEffect(effect = { Log.d("RDLog", "---- out count = $iCount ") })
+        SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
 }

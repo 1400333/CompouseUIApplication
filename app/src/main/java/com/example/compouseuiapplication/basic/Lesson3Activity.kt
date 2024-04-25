@@ -38,6 +38,7 @@ import com.example.compouseuiapplication.ui.theme.CustomBtnEnabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnPressed
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
+import com.example.compouseuiapplication.util.LogUtil
 
 /**
  * 第 3 課：深色主題
@@ -78,7 +79,7 @@ fun CustomButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()    //Pressed、Dragged、Focused、Hovered
 
-    Log.d("RDLog", "[isEnabled]${isEnabled}[isPressed]${isPressed}")
+    LogUtil.log("[isEnabled]${isEnabled}[isPressed]${isPressed}")
 
     var borderStroke: BorderStroke? = null
     val textColot: Color
