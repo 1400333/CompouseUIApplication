@@ -4,7 +4,7 @@ package com.example.compouseuiapplication.data
  * SampleData for Jetpack Compose Tutorial
  */
 object SampleData {
-    val lessonlist = listOf(LessonInfo(LessonInfo.LESSON_1_COMPOSABLE,"第 1 課：可組合函式"),
+    val lessonlist = listOf(LessonInfo(LessonInfo.LESSON_1_COMPOSABLE,"第 1 課：自定義樣式"),
                             LessonInfo(LessonInfo.LESSON_2_INLINE,"第 2 課：版面配置"),
                             LessonInfo(LessonInfo.LESSON_3_THEME,"第 3 課：深色主題"),
                             LessonInfo(LessonInfo.LESSON_4_LAZY_COLUMN,"第 4 課：列表展示"),

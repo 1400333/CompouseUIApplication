@@ -55,19 +55,25 @@ fun CompouseUIApplicationTheme(darkTheme: Boolean = isSystemInDarkTheme(),
     )
 }
 
-//自定義樣式
+/**
+ * MessageCard1自定義樣式
+ * @param darkTheme 深色模式，預設採系統設定
+ * @param content 套用此樣式的 @Composable
+ */
 @Composable
 fun CustomMessageCard1Theme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+    //文字顏色
     val textColor: Color = when {
-        darkTheme -> white
-        else -> nice_blue
+        darkTheme -> white  //深色模式
+        else -> nice_blue   //亮色模式
     }
-
+    //文字背景顏色
     val textBackgroundColor: Color = when {
-        darkTheme -> black272727
-        else -> white
+        darkTheme -> black272727    //深色模式
+        else -> white               //亮色模式
     }
 
+    //建立字體
     val typography = Typography(bodyLarge = TextStyle(fontFamily = FontFamily.Default,
                                                       fontWeight = FontWeight.Normal,
                                                       fontSize = 40.sp,
@@ -76,7 +82,8 @@ fun CustomMessageCard1Theme(darkTheme: Boolean = isSystemInDarkTheme(), content:
                                                       lineHeight = 24.sp,
                                                       letterSpacing = 0.5.sp))
 
+    //為@Composable 套上樣式
     MaterialTheme(typography = typography,    //字體
-                  content = content           //聲明視圖
+                  content = content           //聲明視圖，即@Composable
     )
 }
