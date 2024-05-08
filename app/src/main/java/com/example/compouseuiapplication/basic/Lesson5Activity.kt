@@ -33,7 +33,7 @@ class Lesson5Activity : ComponentActivity() {
         setContent {
             Log.d("RDLog", "---- clicked onCreated setContent ")
 
-            PreviewLesson5_4_remember()
+            CounterLesson5_4_remember()
         }
     }
 }
@@ -43,7 +43,7 @@ class Lesson5Activity : ComponentActivity() {
  * 點擊按鈕，數字不變，只有印一次
  */
 @Composable
-fun PreviewLesson5_1() {
+fun CounterLesson5_1() {
     Surface() {
         var iCount: Int = 0
 
@@ -72,7 +72,7 @@ fun PreviewLesson5_1() {
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
 @Composable
-fun PreviewLesson5_2() {
+fun CounterLesson5_2() {
     Surface() {
         var iCount by mutableStateOf(0)
 
@@ -103,7 +103,7 @@ fun PreviewLesson5_2() {
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
 @Composable
-fun PreviewLesson5_3() {
+fun CounterLesson5_3() {
     Surface() {
         var iCount by mutableStateOf(0)
 
@@ -134,7 +134,7 @@ fun PreviewLesson5_3() {
  */
 @Preview
 @Composable
-fun PreviewLesson5_4_remember() {
+fun CounterLesson5_4_remember() {
     Surface() {
         var iCount by remember { mutableStateOf(0) }   //使用remember
 
@@ -165,7 +165,7 @@ fun PreviewLesson5_4_remember() {
  */
 
 @Composable
-fun PreviewLesson5_5() {
+fun CounterLesson5_5() {
     var iCount by mutableStateOf(0)
     Surface() {
         Button(onClick = { iCount++ },
