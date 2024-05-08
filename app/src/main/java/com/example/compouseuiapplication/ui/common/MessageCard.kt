@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -62,25 +63,31 @@ fun MessageCard2(msg: Message) {
 
 @Composable
 fun MessageCard3(msg: Message) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
-        Image(painter = painterResource(R.drawable.profile_picture),
-              contentDescription = "Contact profile picture",
-              modifier = Modifier
-                  // Set image size to 40 dp
-                  .size(40.dp)
-                  // Clip image to be shaped as a circle
-                  .clip(CircleShape)
-                  .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
+    Surface(shape = RoundedCornerShape(8.dp),
+            shadowElevation = 10.dp,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .width(300.dp)){
+        Row(modifier = Modifier.padding(all = 8.dp)) {
+            Image(painter = painterResource(R.drawable.profile_picture),
+                  contentDescription = "Contact profile picture",
+                  modifier = Modifier
+                      // Set image size to 40 dp
+                      .size(40.dp)
+                      // Clip image to be shaped as a circle
+                      .clip(CircleShape)
+                      .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
 
-        //Modifier 只有 padding 沒有 margin，如開發中要使用margin時，改使用Spacer
-        Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(8.dp))
 
-        Column {
-            Text(text = msg.author, color = MaterialTheme.colorScheme.secondary)
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = msg.body, color = MaterialTheme.colorScheme.secondary)
+            Column {
+                Text(text = msg.author)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = msg.body)
+            }
         }
     }
+
 }
 
 @Composable

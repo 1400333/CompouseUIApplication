@@ -31,6 +31,7 @@
         <activity android:name=".basic.Lesson3Activity"/>
         <activity android:name=".basic.Lesson4Activity"/>
         <activity android:name=".basic.Lesson5Activity"/>
+        <activity android:name=".basic.Lesson6Activity"/>
 
         <activity android:name=".advanced.RequestSampleActivity"/>
     </application>

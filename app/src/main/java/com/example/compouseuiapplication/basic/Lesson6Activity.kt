@@ -2,7 +2,6 @@ package com.example.compouseuiapplication.basic
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -42,38 +40,70 @@ import com.example.compouseuiapplication.ui.theme.CustomBtnTextDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
 import com.example.compouseuiapplication.util.LogUtil
 
-/**
- * 第 3 課：Surface介紹、客製化按鈕
- * Surface 也是 @Composable
- * Modifier 更改元件的外觀，例：間距、高度、全螢幕填滿
- * CompouseUIApplicationTheme 設定深淺主題
- * @Preview 可同時預覽深淺主題
- */
-class Lesson3Activity : ComponentActivity() {
+class Lesson6Activity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             CompouseUIApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(),  //全螢幕填滿
-                        color = MaterialTheme.colorScheme.background) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        MessageCard3(Message(author = getString(R.string.lesson3_sample_author),
-                                             body = getString(R.string.lesson3_sample_body)))
-                        CustomButton(onButtonClick = {},
-                                     text = getString(R.string.lesson3_btn_text1))
-                        CustomButton(onButtonClick = {},
-                                     text = getString(R.string.lesson3_btn_text2),
-                                     isEnabled = false)
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    Column {
+                        CustomButton(onButtonClick = {}, "測試標題")
+                        CustomButton(onButtonClick = {}, "測試標題", false)
                     }
                 }
             }
         }
     }
+
 }
 
+@Composable
+fun CustomButton(
+    onButtonClick: () -> Unit,
+    text: String,
+    isEnabled: Boolean = true,
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()    //Pressed、Dragged、Focused、Hovered
 
+    LogUtil.log("[isEnabled]${isEnabled}[isPressed]${isPressed}")
+
+    var borderStroke: BorderStroke? = null
+    val textColot: Color
+
+    if (isEnabled) {
+        borderStroke = BorderStroke(1.dp, CustomBtnBorder())
+        textColot = CustomBtnTextEnabled()
+    } else {
+        textColot = CustomBtnTextDisabled()
+    }
+
+    val containerColor: Color
+
+    if (isPressed) {
+        containerColor = CustomBtnPressed();
+    } else {
+        containerColor = CustomBtnEnabled()
+    }
+
+    Button(onClick = onButtonClick,
+           interactionSource = interactionSource,
+           enabled = isEnabled,
+           modifier = Modifier
+               .fillMaxWidth()
+               .padding(10.dp)
+               .height(44.dp),
+           shape = RoundedCornerShape(6.dp),
+           colors = ButtonDefaults.buttonColors(containerColor = containerColor,
+                                                disabledContainerColor = CustomBtnDisabled()),
+           border = borderStroke) {
+        Text(text = text,
+             modifier = Modifier.align(Alignment.CenterVertically),
+             color = textColot,
+             fontSize = 16.sp)
+
+    }
+}
 
 @Preview(name = "Light Mode")
 @Preview(
@@ -82,17 +112,13 @@ class Lesson3Activity : ComponentActivity() {
     name = "Dark Mode",
 )
 @Composable
-fun PreviewLesson3() {
+fun PreviewLesson6() {
     CompouseUIApplicationTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Spacer(modifier = Modifier.height(8.dp))
-                MessageCard3(Message("新聞快報",
-                                     "有關於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
+            Column {
                 CustomButton(onButtonClick = {}, "測試標題")
                 CustomButton(onButtonClick = {}, "測試標題", false)
             }
         }
     }
 }
-

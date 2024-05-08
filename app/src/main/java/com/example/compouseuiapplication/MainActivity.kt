@@ -29,6 +29,7 @@ import com.example.compouseuiapplication.basic.Lesson2Activity
 import com.example.compouseuiapplication.basic.Lesson3Activity
 import com.example.compouseuiapplication.basic.Lesson4Activity
 import com.example.compouseuiapplication.basic.Lesson5Activity
+import com.example.compouseuiapplication.basic.Lesson6Activity
 import com.example.compouseuiapplication.data.LessonInfo
 import com.example.compouseuiapplication.data.SampleData
 import com.example.compouseuiapplication.ui.theme.AppBackgroundColor
@@ -92,6 +93,10 @@ fun onClickLesson(context: Context, info: LessonInfo): Intent? {
 
         LessonInfo.LESSON_5_REMEMBER_MUTABLE -> {
             intent = Intent(context, Lesson5Activity::class.java)
+        }
+
+        LessonInfo.LESSON_6_CUSTOME_BTN -> {
+            intent = Intent(context, Lesson6Activity::class.java)
         }
 
         LessonInfo.LESSON_ADV_REQ_VIEWMODEL -> {

@@ -6,9 +6,10 @@ package com.example.compouseuiapplication.data
 object SampleData {
     val lessonlist = listOf(LessonInfo(LessonInfo.LESSON_1_COMPOSABLE,"第 1 課：自定義樣式"),
                             LessonInfo(LessonInfo.LESSON_2_INLINE,"第 2 課：版面配置"),
-                            LessonInfo(LessonInfo.LESSON_3_THEME,"第 3 課：Surface介紹、客製化按鈕"),
+                            LessonInfo(LessonInfo.LESSON_3_THEME,"第 3 課：Surface介紹"),
                             LessonInfo(LessonInfo.LESSON_4_LAZY_COLUMN,"第 4 課：列表展示"),
                             LessonInfo(LessonInfo.LESSON_5_REMEMBER_MUTABLE,"第 5 課：remember和mutableStateOf"),
+                            LessonInfo(LessonInfo.LESSON_6_CUSTOME_BTN,"第 6 課：客製化按鈕"),
                             LessonInfo(LessonInfo.LESSON_ADV_REQ_VIEWMODEL,"進階：Compose中的ViewModel"))
     // Sample conversation data
     val conversationSample = listOf(
