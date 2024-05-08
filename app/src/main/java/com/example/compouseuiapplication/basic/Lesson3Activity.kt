@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.example.compouseuiapplication.R
 import com.example.compouseuiapplication.data.Message
 import com.example.compouseuiapplication.ui.common.MessageCard3
+import com.example.compouseuiapplication.ui.theme.AppBackgroundColor
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 import com.example.compouseuiapplication.ui.theme.CustomBtnBorder
 import com.example.compouseuiapplication.ui.theme.CustomBtnDisabled
@@ -53,9 +54,7 @@ class Lesson3Activity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CompouseUIApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(),  //全螢幕填滿
-                        color = MaterialTheme.colorScheme.background) {
+                Surface(modifier = Modifier.fillMaxSize(), color = AppBackgroundColor()) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Spacer(modifier = Modifier.height(8.dp))
                         MessageCard3(Message(author = getString(R.string.lesson3_sample_author),
@@ -76,7 +75,7 @@ class Lesson3Activity : ComponentActivity() {
 @Composable
 fun PreviewLesson3() {
     CompouseUIApplicationTheme {
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Surface(modifier = Modifier.fillMaxSize(), color = AppBackgroundColor()) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Spacer(modifier = Modifier.height(8.dp))
                 MessageCard3(Message("新聞快報",
