@@ -100,38 +100,35 @@ fun MessageCard4(msg: Message) {
                   .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
         Spacer(modifier = Modifier.width(8.dp))
 
-        // We keep track if the message is expanded or not in this
-        // variable
+        //是否展開，預設值用keep在Message內的bExpanded，以免滑動時回收記憶體，展開狀態錯誤
         var isExpanded by remember { mutableStateOf(msg.bExpanded) }
-        // surfaceColor will be updated gradually from one color to the other
         val surfaceColor by animateColorAsState(
             if (isExpanded)
-                MaterialTheme.colorScheme.primary
+                MaterialTheme.colorScheme.primary   //Surface展開時的顏色
             else
-                MaterialTheme.colorScheme.surface,
+                MaterialTheme.colorScheme.surface,  //Surface合起時的顏色
             label = "",
         )
 
-        // We toggle the isExpanded variable when we click on this Column
         Column(modifier = Modifier.clickable {
+            //點擊Column，展開狀態改變
             isExpanded = !isExpanded
-            msg.bExpanded = isExpanded
+            msg.bExpanded = isExpanded  //keep在Message內的bExpanded內，以免滑動時回收記憶體，展開狀態錯誤
         }) {
             Text(text = msg.author, color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.titleSmall)
 
             Spacer(modifier = Modifier.height(4.dp))
 
+            //由於isExpanded 是 mutableStateOf，會進行監聽數值是否改變，會重繪使用它的Composable，
+            //也就是重繪Surface，因為Surface的color是依照isExpanded 判斷的，其內含組件Text也會一併重繪
             Surface(shape = MaterialTheme.shapes.medium, shadowElevation = 1.dp,
-                // surfaceColor color will be changing gradually from primary to surface
                     color = surfaceColor,
-                // animateContentSize will change the Surface size gradually
                     modifier = Modifier
-                        .animateContentSize()
+                        .animateContentSize()   //Animate content size changes （內容大小改變時的動畫）
                         .padding(1.dp)) {
                 Text(text = msg.body, modifier = Modifier.padding(all = 4.dp),
-                    // If the message is expanded, we display all its content
-                    // otherwise we only display the first line
-                     maxLines = if (isExpanded) Int.MAX_VALUE else 1, style = MaterialTheme.typography.bodyMedium)
+                     maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                     style = MaterialTheme.typography.bodyMedium)
             }
         }
     }

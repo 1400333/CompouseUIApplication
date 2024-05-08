@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compouseuiapplication.util.LogUtil
 
@@ -131,6 +132,7 @@ fun PreviewLesson5_3() {
  * 3.當 Surface重繪時又走過 var iCount by remember{ mutableStateOf(0)} 每次值會從內存中讀取
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
+@Preview
 @Composable
 fun PreviewLesson5_4_remember() {
     Surface() {
