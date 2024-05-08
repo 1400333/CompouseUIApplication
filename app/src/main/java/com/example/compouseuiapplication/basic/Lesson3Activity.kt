@@ -61,19 +61,12 @@ class Lesson3Activity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(8.dp))
                         MessageCard3(Message(author = getString(R.string.lesson3_sample_author),
                                              body = getString(R.string.lesson3_sample_body)))
-                        CustomButton(onButtonClick = {},
-                                     text = getString(R.string.lesson3_btn_text1))
-                        CustomButton(onButtonClick = {},
-                                     text = getString(R.string.lesson3_btn_text2),
-                                     isEnabled = false)
                     }
                 }
             }
         }
     }
 }
-
-
 
 @Preview(name = "Light Mode")
 @Preview(
@@ -89,8 +82,6 @@ fun PreviewLesson3() {
                 Spacer(modifier = Modifier.height(8.dp))
                 MessageCard3(Message("新聞快報",
                                      "有關於「00940之亂」，財訊傳媒董事長謝金河指出，從台灣的「錢多現象」來看，ETF規模還會往上升，政府該如何引導龎大游資，才是核心的問題。"))
-                CustomButton(onButtonClick = {}, "測試標題")
-                CustomButton(onButtonClick = {}, "測試標題", false)
             }
         }
     }
