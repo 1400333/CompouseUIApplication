@@ -40,6 +40,9 @@ import com.example.compouseuiapplication.ui.theme.CustomBtnTextDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
 import com.example.compouseuiapplication.util.LogUtil
 
+/**
+ * 第 6 課：客製化按鈕
+ */
 class Lesson6Activity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

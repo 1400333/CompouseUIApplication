@@ -43,9 +43,8 @@ import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
 import com.example.compouseuiapplication.util.LogUtil
 
 /**
- * 第 3 課：Surface介紹、客製化按鈕
- * Surface 也是 @Composable
- * Modifier 更改元件的外觀，例：間距、高度、全螢幕填滿
+ * 第 3 課：Surface介紹
+ * Surface 畫布
  * CompouseUIApplicationTheme 設定深淺主題
  * @Preview 可同時預覽深淺主題
  */
