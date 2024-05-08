@@ -69,7 +69,7 @@ fun CustomButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()    //Pressed、Dragged、Focused、Hovered
 
-    LogUtil.log("[isEnabled]${isEnabled}[isPressed]${isPressed}")
+    //LogUtil.log("[isEnabled]${isEnabled}[isPressed]${isPressed}")
 
     var borderStroke: BorderStroke? = null
     val textColot: Color

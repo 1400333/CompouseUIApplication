@@ -15,6 +15,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.compouseuiapplication.data.CountryData
+import com.example.compouseuiapplication.util.LogUtil
 
 /**
  * 進階：Compose中的ViewModel
@@ -39,8 +41,6 @@ class RequestSampleActivity : ComponentActivity() {
         setContent {
             onLoading(m_viewModel)
             initCountry(m_viewModel)
-
-            m_viewModel.querySampleData()
         }
     }
 }
@@ -49,11 +49,17 @@ class RequestSampleActivity : ComponentActivity() {
 fun initCountry(viewModel: RequestSampleViewModel) {
     val countryDataList by viewModel.countryDataList.collectAsState()
 
+    LaunchedEffect(Unit) {
+        viewModel.querySampleData()
+        LogUtil.log("[LaunchedEffect]")
+    }
+
     LazyColumn {
         items(countryDataList) { countryData ->
             CountryCard(countryData)
         }
     }
+    LogUtil.log("[initCountry]${countryDataList.size}")
 }
 
 @Composable

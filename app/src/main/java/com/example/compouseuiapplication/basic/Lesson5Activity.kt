@@ -32,8 +32,8 @@ class Lesson5Activity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Log.d("RDLog", "---- clicked onCreated setContent ")
-
             CounterLesson5_4_remember()
+            //TestSideEffect()
         }
     }
 }
@@ -204,11 +204,26 @@ fun PreviewLesson5_6() {
             Text(text = "I have been clicked ${iCount} times",
                  modifier = Modifier.align(Alignment.CenterVertically))
 
-
             SideEffect(effect = { LogUtil.log("---- text count = $iCount ") })
 
         }
         SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
+}
+
+/**
+ * 範例（確保每次 TestSideEffect 組合完成都會執行 a++ ）
+ */
+var a = 0
+@Composable
+fun TestSideEffect() {
+    Column {
+        SideEffect {
+            a++
+            LogUtil.log("---- 3a = $a ")
+        }
+        LogUtil.log("---- 1a = $a ")
+    }
+    LogUtil.log("---- 2a = $a ")
 }
