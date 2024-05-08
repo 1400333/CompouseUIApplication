@@ -75,8 +75,7 @@ fun MessageCard3(msg: Message) {
                       // Set image size to 40 dp
                       .size(40.dp)
                       // Clip image to be shaped as a circle
-                      .clip(CircleShape)
-                      .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape))
+                      .clip(CircleShape))
 
             Spacer(modifier = Modifier.width(8.dp))
 
