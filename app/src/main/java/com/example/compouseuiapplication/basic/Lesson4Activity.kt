@@ -30,7 +30,7 @@ class Lesson4Activity : ComponentActivity() {
             CompouseUIApplicationTheme {
                 Surface(modifier = Modifier.fillMaxSize(),  //全螢幕填滿
                         color = AppBackgroundColor()) {
-                    Conversation(SampleData.conversationSample)
+                    Conversation(SampleData.conversationSample) //conversationSample 為假資料
                 }
 
             }
