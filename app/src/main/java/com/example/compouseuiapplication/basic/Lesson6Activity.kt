@@ -6,6 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -63,24 +66,28 @@ fun CustomButton(
     isEnabled: Boolean = true,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()    //Pressed、Dragged、Focused、Hovered
+    val isPressed by interactionSource.collectIsPressedAsState()    //是否點擊中
+    // Pressed : collectIsPressedAsState()
+    // Dragged : collectIsDraggedAsState()
+    // Focused : collectIsFocusedAsState()
+    // Hovered : collectIsHoveredAsState()
 
     var borderStroke: BorderStroke? = null
     val textColor: Color
 
     if (isEnabled) {
-        borderStroke = BorderStroke(1.dp, CustomBtnBorder())
-        textColor = CustomBtnTextEnabled()
-    } else {
-        textColor = CustomBtnTextDisabled()
+        borderStroke = BorderStroke(1.dp, CustomBtnBorder())    //enabled時邊框顏色
+        textColor = CustomBtnTextEnabled()                      //enabled時文字顏色
+    } else {                                                    //disabled時無邊框
+        textColor = CustomBtnTextDisabled()                     //disabled時文字顏色
     }
 
     val containerColor: Color
 
     if (isPressed) {
-        containerColor = CustomBtnPressed();
+        containerColor = CustomBtnPressed() //點擊時的顏色
     } else {
-        containerColor = CustomBtnEnabled()
+        containerColor = CustomBtnEnabled() //放開時的顏色
     }
 
     Button(onClick = onButtonClick,
@@ -92,7 +99,7 @@ fun CustomButton(
                .height(44.dp),
            shape = RoundedCornerShape(6.dp),
            colors = ButtonDefaults.buttonColors(containerColor = containerColor,
-                                                disabledContainerColor = CustomBtnDisabled()),
+                                                disabledContainerColor = CustomBtnDisabled()), //disabled時的顏色
            border = borderStroke) {
         Text(text = text,
              modifier = Modifier.align(Alignment.CenterVertically),
