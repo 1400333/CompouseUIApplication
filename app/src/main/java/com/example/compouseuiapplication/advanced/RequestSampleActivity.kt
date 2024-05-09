@@ -40,9 +40,15 @@ class RequestSampleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TestSideEffectVM(m_viewModel)
-            //onLoading(m_viewModel)
-            //initCountry(m_viewModel)
+            //範例1.數十秒，沒有開thread
+            //TestSideEffect()
+
+            //範例2.數十秒，有開thread
+            //TestSideEffectVM(m_viewModel)
+
+            //範例3.api串接
+            onLoading(m_viewModel)
+            initCountry(m_viewModel)
         }
     }
 }
