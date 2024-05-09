@@ -31,9 +31,8 @@ class Lesson5Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Log.d("RDLog", "---- clicked onCreated setContent ")
-            //CounterLesson5_4_remember()
-            TestSideEffect()
+            CounterLesson5_4_remember()
+            //TestSideEffect()
         }
     }
 }
@@ -47,7 +46,7 @@ fun TestSideEffect() {
         var iCount by remember { mutableStateOf(0) }
 
         SideEffect {
-            if (iCount <10) {
+            if (iCount < 10) {
                 iCount++
             }
             Thread.sleep(1000)
@@ -60,7 +59,7 @@ fun TestSideEffect() {
 }
 
 /**
- * 5_1
+ * 5_1 未使用mutableStateOf
  * 點擊按鈕，數字不變，只有印一次
  */
 @Composable
@@ -86,10 +85,10 @@ fun CounterLesson5_1() {
 }
 
 /**
- * 5_2
+ * 5_2 用mutableStateOf
  * 講解：
- * 1.var iCount by mutableStateOf(0)在Surface底下，而Surface底下的Composable沒有用到iCount，所以只會宣告一次
- * 2.Button底下Composable(Text)「有用到iCount」所以當iCount有變化時Button的Text會重繪，Button不會重繪
+ * 1.var iCount by mutableStateOf(0)在Surface底下，而Surface底下的Composable沒有用到iCount，所以只會宣告一次。
+ * 2.Button底下Composable(Text)「有用到iCount」所以當iCount有變化時Button的Text會重繪，Button不會重繪。
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
 @Composable
@@ -118,9 +117,9 @@ fun CounterLesson5_2() {
 /**
  * 5_3 把Button的padding改成跟count有關
  * 講解：
- * 1.var iCount by mutableStateOf(0)在Surface底下，
- * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時Surface會重繪
- * 3.當 Surface重繪時又走過 var iCount by mutableStateOf(0) 又被重置為0
+ * 1.var iCount by mutableStateOf(0)在Surface底下。
+ * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時，Surface內部組件會重繪。
+ * 3.當 Surface內部組件重繪時，又走過 var iCount by mutableStateOf(0) 數值再次重置為0。
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
 @Composable
@@ -146,12 +145,11 @@ fun CounterLesson5_3() {
 }
 
 /**
- * 5_4 remember
+ * 5_4 使用remember + mutableStateOf
  * 講解：
- * 1.var iCount by remember{ mutableStateOf(0)}在Surface底下，
- * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時Surface會重繪
- * 3.當 Surface重繪時又走過 var iCount by remember{ mutableStateOf(0)} 每次值會從內存中讀取
- * 疑惑：此處發生錯誤表示沒有使用remember
+ * 1.var iCount by mutableStateOf(0)在Surface底下。
+ * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時，Surface內部組件會重繪，因remember，記憶體中存有iCount變化後的數值。
+ * 3.當 Surface內部組件重繪時，又走過 var iCount by remember{ mutableStateOf(0)} 會從內存中讀取。
  */
 @Preview
 @Composable
@@ -179,12 +177,11 @@ fun CounterLesson5_4_remember() {
 /**
  * 5_5 outside Surface
  * 講解：
- * 1.var iCount by mutableStateOf(0) 在setContent底下，但底下的Surface沒用到iCount不會重繪
- * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時Surface會重繪
- * 3.當 Surface重繪時不會走過 var iCount by mutableStateOf(0)，所以值不會被重置可以取到增加的值
+ * 1.var iCount by mutableStateOf(0) 在Surface 外面，setContent底下。
+ * 2.Surface底下Composable(Button)「有用到iCount」所以當iCount有變化時，Surface內部組件會重繪。
+ * 3.當Surface內部組件重繪時，不會走過 var iCount by mutableStateOf(0)，所以值不會被重置，可以取到增加的值。
  * 疑惑：此處發生錯誤表示沒有使用remember
  */
-
 @Composable
 fun CounterLesson5_5() {
     var iCount by mutableStateOf(0)
@@ -209,12 +206,12 @@ fun CounterLesson5_5() {
 /**
  * 5_6 outside inline
  * 講解：
- * 1.var iCount by mutableStateOf(0) 在setContent底下
- * 1.Column屬於inline 函数內部重匯時，他們也會跟著重繪，也就是setContent底下有人要重繪了，
- * 就會經過 var iCount by mutableStateOf(0) 重置為0
+ * 1.var iCount by mutableStateOf(0) 在Column 外面，setContent底下。
+ * 2.Column屬於inline函数，內部重繪時，他們也會跟著重繪，也就是setContent底下的Column要重繪了(setContent內部組件重繪)。
+ * 3.setContent內部組件重繪，又走過var iCount by mutableStateOf(0) 數值再次重置為0。
  */
 @Composable
-fun PreviewLesson5_6() {
+fun CounterLesson5_6() {
     var iCount by mutableStateOf(0)
     Column() {
         Button(onClick = { iCount++ },
