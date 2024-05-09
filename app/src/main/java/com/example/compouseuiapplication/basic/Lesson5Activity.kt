@@ -32,9 +32,30 @@ class Lesson5Activity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Log.d("RDLog", "---- clicked onCreated setContent ")
-            CounterLesson5_4_remember()
-            //TestSideEffect()
+            //CounterLesson5_4_remember()
+            TestSideEffect()
         }
+    }
+}
+
+/**
+ * 範例:數十秒（確保每次 TestSideEffect 組合完成都會執行 SideEffect ）
+ */
+@Composable
+fun TestSideEffect() {
+    Surface {
+        var iCount by remember { mutableStateOf(0) }
+
+        SideEffect {
+            if (iCount <10) {
+                iCount++
+            }
+            Thread.sleep(1000)
+            LogUtil.log("----[iCount] = $iCount ")
+        }
+
+        Text(text = "I have been clicked ${iCount} times")
+
     }
 }
 
@@ -210,20 +231,4 @@ fun PreviewLesson5_6() {
         SideEffect(effect = { LogUtil.log("---- out count = $iCount ") })
 
     }
-}
-
-/**
- * 範例（確保每次 TestSideEffect 組合完成都會執行 a++ ）
- */
-var a = 0
-@Composable
-fun TestSideEffect() {
-    Column {
-        SideEffect {
-            a++
-            LogUtil.log("---- 3a = $a ")
-        }
-        LogUtil.log("---- 1a = $a ")
-    }
-    LogUtil.log("---- 2a = $a ")
 }
