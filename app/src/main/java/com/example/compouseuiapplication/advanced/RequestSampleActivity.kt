@@ -16,6 +16,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,9 +40,46 @@ class RequestSampleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            onLoading(m_viewModel)
-            initCountry(m_viewModel)
+            TestSideEffectVM(m_viewModel)
+            //onLoading(m_viewModel)
+            //initCountry(m_viewModel)
         }
+    }
+}
+
+@Composable
+fun TestSideEffect() {
+    Surface {
+        var iCount by remember { mutableStateOf(0) }
+
+        SideEffect {
+            if (iCount < 10) {
+                iCount++
+            }
+            Thread.sleep(1000)
+            LogUtil.log("----[iCount] = $iCount ")
+        }
+
+        Text(text = "I have been clicked ${iCount} times")
+
+    }
+}
+
+/**
+ * 範例:數十秒（確保每次 TestSideEffect 組合完成都會執行 SideEffect ）
+ */
+@Composable
+fun TestSideEffectVM(viewModel: RequestSampleViewModel) {
+    Surface {
+        val iCount by viewModel.count.collectAsState()
+
+        SideEffect {
+            viewModel.addCount()
+            LogUtil.log("----[iCount] = $iCount ")
+        }
+
+        Text(text = "I have been clicked ${iCount} times")
+
     }
 }
 

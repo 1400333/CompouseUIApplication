@@ -32,29 +32,7 @@ class Lesson5Activity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CounterLesson5_4_remember()
-            //TestSideEffect()
         }
-    }
-}
-
-/**
- * 範例:數十秒（確保每次 TestSideEffect 組合完成都會執行 SideEffect ）
- */
-@Composable
-fun TestSideEffect() {
-    Surface {
-        var iCount by remember { mutableStateOf(0) }
-
-        SideEffect {
-            if (iCount < 10) {
-                iCount++
-            }
-            Thread.sleep(1000)
-            LogUtil.log("----[iCount] = $iCount ")
-        }
-
-        Text(text = "I have been clicked ${iCount} times")
-
     }
 }
 

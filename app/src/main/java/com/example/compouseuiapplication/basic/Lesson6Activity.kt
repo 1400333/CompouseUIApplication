@@ -8,7 +8,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,8 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compouseuiapplication.R
-import com.example.compouseuiapplication.data.Message
-import com.example.compouseuiapplication.ui.common.MessageCard3
 import com.example.compouseuiapplication.ui.theme.CompouseUIApplicationTheme
 import com.example.compouseuiapplication.ui.theme.CustomBtnBorder
 import com.example.compouseuiapplication.ui.theme.CustomBtnDisabled
@@ -38,7 +35,6 @@ import com.example.compouseuiapplication.ui.theme.CustomBtnEnabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnPressed
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextDisabled
 import com.example.compouseuiapplication.ui.theme.CustomBtnTextEnabled
-import com.example.compouseuiapplication.util.LogUtil
 
 /**
  * 第 6 課：客製化按鈕
@@ -50,8 +46,8 @@ class Lesson6Activity: ComponentActivity() {
             CompouseUIApplicationTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Column {
-                        CustomButton(onButtonClick = {}, "測試標題")
-                        CustomButton(onButtonClick = {}, "測試標題", false)
+                        CustomButton(onButtonClick = {}, getString(R.string.lesson6_btn_text))
+                        CustomButton(onButtonClick = {}, getString(R.string.lesson6_btn_text), false)
                     }
                 }
             }
@@ -69,16 +65,14 @@ fun CustomButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()    //Pressed、Dragged、Focused、Hovered
 
-    //LogUtil.log("[isEnabled]${isEnabled}[isPressed]${isPressed}")
-
     var borderStroke: BorderStroke? = null
-    val textColot: Color
+    val textColor: Color
 
     if (isEnabled) {
         borderStroke = BorderStroke(1.dp, CustomBtnBorder())
-        textColot = CustomBtnTextEnabled()
+        textColor = CustomBtnTextEnabled()
     } else {
-        textColot = CustomBtnTextDisabled()
+        textColor = CustomBtnTextDisabled()
     }
 
     val containerColor: Color
@@ -102,7 +96,7 @@ fun CustomButton(
            border = borderStroke) {
         Text(text = text,
              modifier = Modifier.align(Alignment.CenterVertically),
-             color = textColot,
+             color = textColor,
              fontSize = 16.sp)
 
     }
@@ -119,8 +113,8 @@ fun PreviewLesson6() {
     CompouseUIApplicationTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             Column {
-                CustomButton(onButtonClick = {}, "測試標題")
-                CustomButton(onButtonClick = {}, "測試標題", false)
+                CustomButton(onButtonClick = {}, "取消")
+                CustomButton(onButtonClick = {}, "取消", false)
             }
         }
     }

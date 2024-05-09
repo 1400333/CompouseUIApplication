@@ -1,16 +1,15 @@
 package com.example.compouseuiapplication.advanced
 
 import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.compouseuiapplication.api.OnDataRecovery
 import com.example.compouseuiapplication.api.RequestData
 import com.example.compouseuiapplication.api.RequestManager
 import com.example.compouseuiapplication.api.ResponseData
 import com.example.compouseuiapplication.data.CountryData
 import com.example.compouseuiapplication.data.CountryDataList
-import com.example.compouseuiapplication.util.LogUtil
 import com.example.compouseuiapplication.util.UrlUtil
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,8 +26,21 @@ class RequestSampleViewModel : AndroidViewModel {
     private val m_countryDataList = MutableStateFlow<List<CountryData>>(mutableListOf())
     val countryDataList: StateFlow<List<CountryData>> get() = m_countryDataList
 
+    private val m_handler = Handler(Looper.getMainLooper())
+
+    private val _iCount = MutableStateFlow<Int>(0)
+    val count: StateFlow<Int> get() = _iCount
+
     constructor(application: Application) : super(application) {
 
+    }
+
+    fun addCount() {
+        m_handler.postDelayed(Runnable {
+            if (_iCount.value < 10) {
+                _iCount.value += 1
+            }
+        }, 1000)
     }
 
     fun querySampleData() {
@@ -37,7 +49,8 @@ class RequestSampleViewModel : AndroidViewModel {
                                           UrlUtil.packReqQueryGetSample("nathaniel"),
                                           true)) { responseData: ResponseData? ->
 
-            m_countryDataList.value = CountryDataList.parseCountryList(responseData?.m_joRespData).getCountryList()
+            m_countryDataList.value =
+                CountryDataList.parseCountryList(responseData?.m_joRespData).getCountryList()
         }
     }
 
