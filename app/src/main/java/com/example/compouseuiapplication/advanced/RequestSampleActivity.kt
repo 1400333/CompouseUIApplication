@@ -44,11 +44,11 @@ class RequestSampleActivity : ComponentActivity() {
             //TestSideEffect()
 
             //範例2.數十秒，有開thread
-            //TestSideEffectVM(m_viewModel)
+            TestSideEffectVM(m_viewModel)
 
             //範例3.api串接
-            onLoading(m_viewModel)
-            initCountry(m_viewModel)
+//            onLoading(m_viewModel)
+//            initCountry(m_viewModel)
         }
     }
 }
@@ -66,13 +66,12 @@ fun TestSideEffect() {
             LogUtil.log("----[iCount] = $iCount ")
         }
 
-        Text(text = "I have been clicked ${iCount} times")
-
+        Text(text = "計數次數：${iCount} ")
     }
 }
 
 /**
- * 範例:數十秒（確保每次 TestSideEffect 組合完成都會執行 SideEffect ）
+ * 範例:數十秒（確保每次 TestSideEffectVM 組合完成都會執行 SideEffect ）
  */
 @Composable
 fun TestSideEffectVM(viewModel: RequestSampleViewModel) {
@@ -84,8 +83,7 @@ fun TestSideEffectVM(viewModel: RequestSampleViewModel) {
             LogUtil.log("----[iCount] = $iCount ")
         }
 
-        Text(text = "I have been clicked ${iCount} times")
-
+        Text(text = "計數次數：${iCount} ")
     }
 }
 
