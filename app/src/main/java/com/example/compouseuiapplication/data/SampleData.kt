@@ -10,7 +10,8 @@ object SampleData {
                             LessonInfo(LessonInfo.LESSON_4_LAZY_COLUMN,"第 4 課：列表展示"),
                             LessonInfo(LessonInfo.LESSON_5_REMEMBER_MUTABLE,"第 5 課：remember和mutableStateOf"),
                             LessonInfo(LessonInfo.LESSON_6_CUSTOME_BTN,"第 6 課：客製化按鈕"),
-                            LessonInfo(LessonInfo.LESSON_ADV_REQ_VIEWMODEL,"進階：Compose中的ViewModel"))
+                            LessonInfo(LessonInfo.LESSON_ADV_REQ_VIEWMODEL,"進階：Compose中的ViewModel"),
+                            LessonInfo(LessonInfo.LESSON_ADV_EFFECT,"進階：Effect"))
     // Sample conversation data
     val conversationSample = listOf(
         Message(

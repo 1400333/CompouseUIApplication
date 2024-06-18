@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import com.example.compouseuiapplication.advanced.EffectActivity
 import com.example.compouseuiapplication.advanced.RequestSampleActivity
 import com.example.compouseuiapplication.basic.Lesson1Activity
 import com.example.compouseuiapplication.basic.Lesson2Activity
@@ -103,6 +104,9 @@ fun onClickLesson(context: Context, info: LessonInfo): Intent? {
             intent = Intent(context, RequestSampleActivity::class.java)
         }
 
+        LessonInfo.LESSON_ADV_EFFECT ->{
+            intent = Intent(context, EffectActivity::class.java)
+        }
     }
 
     return intent
